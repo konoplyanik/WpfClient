@@ -19,6 +19,8 @@ public class ImageTextRepository : IImageTextRepository
 
     public async Task<List<ImageTextDto>> GetImageTextDataAsync()
     {
-        return await _webApiClient.GetImageTextDataAsync();
+        var result = await _webApiClient.GetImageTextDataAsync();
+
+        return result;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using WpfClient.Infrastructure.Model;
 
 namespace WpfClient.Infrastructure.HttpClients;
@@ -33,6 +34,13 @@ public class WebApiClient : IWebApiClient
         response.EnsureSuccessStatusCode();
 
         var jsonString = await response.Content.ReadAsStringAsync();
-        return JsonSerializer.Deserialize<List<ImageTextDto>>(jsonString);
+        var options = new JsonSerializerOptions
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            Converters = { new JsonStringEnumConverter() }
+        };
+        var result = JsonSerializer.Deserialize<List<ImageTextDto>>(jsonString, options);
+
+        return result;
     }
 }
