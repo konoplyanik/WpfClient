@@ -18,6 +18,7 @@ public class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel(IImageTextService imageTextService)
     {
         _imageTextService = imageTextService;
+        GetImages();
     }
 
     public string Title
