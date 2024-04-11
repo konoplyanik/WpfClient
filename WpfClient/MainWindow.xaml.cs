@@ -5,12 +5,10 @@ namespace WpfClient;
 
 public partial class MainWindow : Window
 {
-    private readonly MainWindowViewModel _viewModel;
-
-    public MainWindow()
+    public MainWindow(MainWindowViewModel viewModel)
     {
         InitializeComponent();
 
-        DataContext = _viewModel;
+        DataContext = viewModel;
     }
 }

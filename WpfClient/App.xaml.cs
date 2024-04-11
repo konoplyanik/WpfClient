@@ -31,7 +31,7 @@ namespace WpfClient
                 .AddJsonFile("appsettings.json", false)
                 .Build());
 
-            services.AddScoped<IWebApiClient, WebApiClient>();
+            services.AddHttpClient<IWebApiClient, WebApiClient>();
             services.AddScoped<IImageTextRepository, ImageTextRepository>();
             services.AddSingleton<IMapper>(MapperInitializer.Initialize());
             services.AddScoped<IImageTextService, ImageTextService>();
