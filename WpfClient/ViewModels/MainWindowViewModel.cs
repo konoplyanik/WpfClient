@@ -91,7 +91,6 @@ public class MainWindowViewModel : ViewModelBase
 
     private async void OpenImage()
     {
-        // Open the file dialog and update the Image property
         var dialog = new OpenFileDialog();
         dialog.Filter = "Image files (*.png, *.jpg, *.jpeg, *.gif)|*.png;*.jpg;*.jpeg;*.gif";
         if (dialog.ShowDialog() == true)
@@ -102,8 +101,6 @@ public class MainWindowViewModel : ViewModelBase
 
     private async void Upload()
     {
-        // Upload the image and text to the web API
-        // Проверка на заполнение полей
         if (string.IsNullOrEmpty(Title) || Image == null)
         {
             MessageBox.Show("Please fill in all the fields.");
@@ -112,7 +109,6 @@ public class MainWindowViewModel : ViewModelBase
 
         try
         {
-            // Создать объект ImageTextData и отправить данные на веб-API
             var imageTextData = new ImageTextData
             {
                 Text = Title,
@@ -132,7 +128,6 @@ public class MainWindowViewModel : ViewModelBase
     {
         try
         {
-            // Получить список ранее загруженных изображений с сервера
             UploadedImages = await _imageTextService.GetImageTextDataAsync();
         }
         catch (Exception ex)

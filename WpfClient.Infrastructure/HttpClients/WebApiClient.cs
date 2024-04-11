@@ -16,7 +16,6 @@ public class WebApiClient : IWebApiClient
 
     public async Task UploadImageTextDataAsync(ImageTextDto data)
     {
-        // Implement the upload logic using the _httpClient
         var apiUrl = "https://localhost:7048/ImageText/save-image";
 
         using (var content = new StringContent(JsonSerializer.Serialize(data), Encoding.UTF8, "application/json"))
@@ -28,7 +27,6 @@ public class WebApiClient : IWebApiClient
 
     public async Task<List<ImageTextDto>> GetImageTextDataAsync()
     {
-        // Implement the get logic using the _httpClient
         var apiUrl = "https://localhost:7048/ImageText/get-images";
         var response = await _httpClient.GetAsync(apiUrl);
         response.EnsureSuccessStatusCode();
